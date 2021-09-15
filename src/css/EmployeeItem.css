@@ -1,0 +1,18 @@
+.employee{
+    background: #f4f4f4;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.employee.active{
+    border-left: 5px solid green;
+}
+
+.employee h3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
