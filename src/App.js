@@ -1,11 +1,14 @@
 import './App.css';
 import Employees from './components/Employees';
 import Header from './components/Header';
+import Demo from './components/Demo';
 import { useState, useEffect } from 'react'
 import AddEmployee from './components/AddEmployee';
 import Footer from './components/Footer';
 import { BrowserRouter, Route} from 'react-router-dom'
 import About from './components/About';
+import EmployeeDescription from './components/EmployeeDescription';
+import axios from 'axios';
 
 function App() {
 
@@ -43,6 +46,12 @@ function App() {
     setEmployees([...employees, data]);
   }
 
+  const addEmployeeAxios = async (employee)=>{
+    let response = await axios.post('http://localhost:5000/employees', employee);
+    const data = await response.data;
+    setEmployees([...employees, data]);
+  }
+
   const deleteEmployee = async (id)=>{
     let response = await fetch(`http://localhost:5000/employees/${id}`,{
       method: 'DELETE'
@@ -76,11 +85,13 @@ function App() {
         <Route path='/' exact
           render={(props) => (
               <>
-                {showForm && <AddEmployee onAdd={addEmployee}/>}
+                {showForm && <Demo onAdd={addEmployeeAxios}/>}
+                {/*showForm && <AddEmployee onAdd={addEmployee}/>*/}
                 <Employees employees={employees} onDelete={deleteEmployee} onToggle={toggleEmployeeActiveState}/>
               </>
           )}/>
         <Route path='/about' component={About}/>
+        <Route path="/employee/:id" component={EmployeeDescription}/>
         <Footer/>
       </div>
       </BrowserRouter>

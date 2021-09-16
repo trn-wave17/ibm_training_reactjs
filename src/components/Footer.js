@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Footer = props => {
     return (
-        <footer class="footer">
+        <footer className="footer">
             <p>Copyright &copy; IBM 2021</p>
             <Link to="/about">About</Link>
         </footer>

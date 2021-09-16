@@ -16,3 +16,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
 }
+
+.employee-link{
+    text-decoration: none;
+}
